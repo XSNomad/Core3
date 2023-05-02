@@ -87,7 +87,7 @@ DROP TABLE IF EXISTS `swgemu`.`account_log`;
 CREATE TABLE  `swgemu`.`account_log` (
   `acclog_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `account_id` int(10) unsigned NOT NULL,
-  `timestamp` datetime NOT NULL,
+  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ip_address` varchar(15) NOT NULL,
   PRIMARY KEY (`acclog_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -214,7 +214,7 @@ CREATE TABLE  `swgemu`.`characters` (
   `race` tinyint(2) NOT NULL DEFAULT '0',
   `gender` tinyint(1) NOT NULL DEFAULT '0',
   `template` tinytext NOT NULL,
-  `creation_date` TIMESTAMP NOT NULL,
+  `creation_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`character_oid`),
   KEY `acc_idx` (`account_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -243,7 +243,7 @@ CREATE TABLE  `swgemu`.`characters_dirty` (
   `race` tinyint(2) NOT NULL DEFAULT '0',
   `gender` tinyint(1) NOT NULL DEFAULT '0',
   `template` tinytext NOT NULL,
-  `creation_date` TIMESTAMP NOT NULL,
+  `creation_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`character_oid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -271,7 +271,7 @@ CREATE TABLE  `swgemu`.`deleted_characters` (
   `race` tinyint(2) NOT NULL DEFAULT '0',
   `gender` tinyint(1) NOT NULL DEFAULT '0',
   `template` tinytext NOT NULL,
-  `creation_date` TIMESTAMP NOT NULL,
+  `creation_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`character_oid`),
   KEY `acc_idx` (`account_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -976,7 +976,7 @@ CREATE TABLE  `swgemu`.`mantis_tokens_table` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `owner` int(11) NOT NULL,
   `type` int(11) NOT NULL,
-  `timestamp` datetime NOT NULL,
+  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `expiry` datetime DEFAULT NULL,
   `value` longtext NOT NULL,
   PRIMARY KEY (`id`),
